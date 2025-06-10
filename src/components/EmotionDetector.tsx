@@ -1,6 +1,5 @@
-
 import React, { useRef, useState, useEffect } from 'react';
-import { Camera, Upload, Loader2 } from 'lucide-react';
+import { Camera, Upload, Loader2, RefreshCcw, CameraOff } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { DetectedEmotion } from '@/pages/Index';
 
@@ -70,8 +69,15 @@ const EmotionDetector: React.FC<EmotionDetectorProps> = ({
     if (videoRef.current?.srcObject) {
       const tracks = (videoRef.current.srcObject as MediaStream).getTracks();
       tracks.forEach(track => track.stop());
+      videoRef.current.srcObject = null;
     }
     setIsStreaming(false);
+  };
+
+  const reloadCamera = async () => {
+    stopCamera();
+    await new Promise(resolve => setTimeout(resolve, 100)); // Small delay to ensure cleanup
+    await startCamera();
   };
 
   const captureAndAnalyze = async () => {
@@ -163,15 +169,38 @@ const EmotionDetector: React.FC<EmotionDetectorProps> = ({
           )}
         </div>
 
-        {!isStreaming && !error && (
-          <Button
-            onClick={startCamera}
-            className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
-          >
-            <Camera className="mr-2 h-4 w-4" />
-            Start Camera
-          </Button>
-        )}
+        {/* Camera Control Buttons */}
+        <div className="flex gap-3">
+          {!isStreaming && !error && (
+            <Button
+              onClick={startCamera}
+              className="flex-1 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
+            >
+              <Camera className="mr-2 h-4 w-4" />
+              Start Camera
+            </Button>
+          )}
+          
+          {isStreaming && (
+            <>
+              <Button
+                onClick={reloadCamera}
+                className="flex-1 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600"
+              >
+                <RefreshCcw className="mr-2 h-4 w-4" />
+                Reload Camera
+              </Button>
+              <Button
+                onClick={stopCamera}
+                variant="outline"
+                className="flex-1 border-white/30 text-white hover:bg-white/10"
+              >
+                <CameraOff className="mr-2 h-4 w-4" />
+                Turn Off Camera
+              </Button>
+            </>
+          )}
+        </div>
       </div>
     );
   }
