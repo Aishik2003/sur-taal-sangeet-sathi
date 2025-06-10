@@ -1,3 +1,4 @@
+
 import React, { useState, useRef } from 'react';
 import { Play, Pause, Heart, Music, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -24,11 +25,11 @@ const MusicRecommendations: React.FC<MusicRecommendationsProps> = ({ emotion }) 
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  // Curated Indian music database organized by emotion with YouTube URLs
+  // Updated Indian music database with working YouTube URLs
   const musicDatabase: Record<string, Song[]> = {
     happy: [
       { id: '1', title: 'Jai Ho', artist: 'A.R. Rahman', genre: 'Bollywood', year: '2008', duration: '5:09', audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', youtubeUrl: 'https://www.youtube.com/watch?v=YVw7eJ0vGfM' },
-      { id: '2', title: 'Nagada Sang Dhol', artist: 'Shreya Ghoshal', genre: 'Bollywood', year: '2013', duration: '4:52', audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', youtubeUrl: 'https://www.youtube.com/watch?v=dhI6egoQlkU' },
+      { id: '2', title: 'Nagada Sang Dhol', artist: 'Shreya Ghoshal', genre: 'Bollywood', year: '2013', duration: '4:52', audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', youtubeUrl: 'https://www.youtube.com/watch?v=QGTjbyyg0ws' },
       { id: '3', title: 'Bhangra Paale', artist: 'Divine', genre: 'Hip-Hop', year: '2020', duration: '3:24', audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', youtubeUrl: 'https://www.youtube.com/watch?v=yUC2OmNwqhE' },
       { id: '4', title: 'Gallan Goodiyaan', artist: 'Yashita Sharma', genre: 'Bollywood', year: '2014', duration: '4:11', audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', youtubeUrl: 'https://www.youtube.com/watch?v=V6s7jB6-GoU' },
       { id: '5', title: 'Kar Gayi Chull', artist: 'Neha Kakkar', genre: 'Bollywood', year: '2016', duration: '3:18', audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', youtubeUrl: 'https://www.youtube.com/watch?v=WjSKWbONfnU' }
@@ -48,24 +49,24 @@ const MusicRecommendations: React.FC<MusicRecommendationsProps> = ({ emotion }) 
       { id: '15', title: 'Khalibali', artist: 'Shivam Mahadevan', genre: 'Bollywood', year: '2017', duration: '4:28', audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', youtubeUrl: 'https://www.youtube.com/watch?v=isZ8V2Eg9YQ' }
     ],
     neutral: [
-      { id: '16', title: 'Vande Mataram', artist: 'A.R. Rahman', genre: 'Patriotic', year: '1997', duration: '6:52', audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', youtubeUrl: 'https://www.youtube.com/watch?v=10B4SX_7hCg' },
-      { id: '17', title: 'Raga Yaman', artist: 'Pt. Ravi Shankar', genre: 'Classical', year: '1995', duration: '8:15', audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', youtubeUrl: 'https://www.youtube.com/watch?v=EkwqPJZe8ms' },
-      { id: '18', title: 'Ketto', artist: 'Bonobo', genre: 'Electronic', year: '2013', duration: '4:32', audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', youtubeUrl: 'https://www.youtube.com/watch?v=84TYi3FOMlU' },
-      { id: '19', title: 'Mumbai', artist: 'A.R. Rahman', genre: 'Instrumental', year: '2009', duration: '5:43', audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', youtubeUrl: 'https://www.youtube.com/watch?v=F4t3nJt8VaI' },
-      { id: '20', title: 'Breathe Me', artist: 'Prateek Kuhad', genre: 'Indie', year: '2018', duration: '3:56', audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', youtubeUrl: 'https://www.youtube.com/watch?v=TL3fICddlpk' }
+      { id: '16', title: 'Vande Mataram', artist: 'A.R. Rahman', genre: 'Patriotic', year: '1997', duration: '6:52', audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', youtubeUrl: 'https://www.youtube.com/watch?v=Yj6V_a7B5ho' },
+      { id: '17', title: 'Raga Yaman', artist: 'Pt. Ravi Shankar', genre: 'Classical', year: '1995', duration: '8:15', audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', youtubeUrl: 'https://www.youtube.com/watch?v=qE5GeG4ADk0' },
+      { id: '18', title: 'Tu Hi Re', artist: 'A.R. Rahman', genre: 'Bollywood', year: '2004', duration: '4:32', audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', youtubeUrl: 'https://www.youtube.com/watch?v=kJa2kwoZ2a4' },
+      { id: '19', title: 'Mumbai Theme', artist: 'A.R. Rahman', genre: 'Instrumental', year: '2009', duration: '5:43', audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', youtubeUrl: 'https://www.youtube.com/watch?v=F4t3nJt8VaI' },
+      { id: '20', title: 'Cold Mess', artist: 'Prateek Kuhad', genre: 'Indie', year: '2018', duration: '3:56', audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', youtubeUrl: 'https://www.youtube.com/watch?v=TL3fICddlpk' }
     ],
     surprised: [
-      { id: '21', title: 'Nagada Sang Dhol', artist: 'Shreya Ghoshal', genre: 'Bollywood', year: '2013', duration: '4:52', audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', youtubeUrl: 'https://www.youtube.com/watch?v=dhI6egoQlkU' },
+      { id: '21', title: 'Nagada Sang Dhol', artist: 'Shreya Ghoshal', genre: 'Bollywood', year: '2013', duration: '4:52', audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', youtubeUrl: 'https://www.youtube.com/watch?v=QGTjbyyg0ws' },
       { id: '22', title: 'Dhoom Machale', artist: 'Sunidhi Chauhan', genre: 'Bollywood', year: '2004', duration: '5:27', audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', youtubeUrl: 'https://www.youtube.com/watch?v=EZe1wysuMak' },
-      { id: '23', title: 'Ainvayi Ainvayi', artist: 'Salim-Sulaiman', genre: 'Bollywood', year: '2008', duration: '6:05', audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', youtubeUrl: 'https://www.youtube.com/watch?v=GDKhGoEZgf4' },
-      { id: '24', title: 'Bismil', artist: 'Arijit Singh', genre: 'Bollywood', year: '2022', duration: '4:31', audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', youtubeUrl: 'https://www.youtube.com/watch?v=2l5qqRgdXfg' },
+      { id: '23', title: 'Ainvayi Ainvayi', artist: 'Salim-Sulaiman', genre: 'Bollywood', year: '2008', duration: '6:05', audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', youtubeUrl: 'https://www.youtube.com/watch?v=y0xvB8UWVdo' },
+      { id: '24', title: 'Bismil', artist: 'Arijit Singh', genre: 'Bollywood', year: '2022', duration: '4:31', audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', youtubeUrl: 'https://www.youtube.com/watch?v=xGP4u0vlOmM' },
       { id: '25', title: 'Khairiyat', artist: 'Arijit Singh', genre: 'Bollywood', year: '2019', duration: '4:40', audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', youtubeUrl: 'https://www.youtube.com/watch?v=5SS9g9fBDEI' }
     ],
     fear: [
-      { id: '26', title: 'Om Namah Shivaya', artist: 'Krishna Das', genre: 'Devotional', year: '2001', duration: '7:23', audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', youtubeUrl: 'https://www.youtube.com/watch?v=bfQ1wlRdWfk' },
+      { id: '26', title: 'Om Namah Shivaya', artist: 'Krishna Das', genre: 'Devotional', year: '2001', duration: '7:23', audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', youtubeUrl: 'https://www.youtube.com/watch?v=YIcJ8e_JmM8' },
       { id: '27', title: 'Hanuman Chalisa', artist: 'Hariharan', genre: 'Devotional', year: '2000', duration: '8:12', audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', youtubeUrl: 'https://www.youtube.com/watch?v=YxYiW5OrNMw' },
       { id: '28', title: 'Shiva Moon', artist: 'Prem Joshua', genre: 'Meditation', year: '2004', duration: '6:45', audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', youtubeUrl: 'https://www.youtube.com/watch?v=WYiUB87p8zQ' },
-      { id: '29', title: 'Gayatri Mantra', artist: 'Anuradha Paudwal', genre: 'Devotional', year: '1999', duration: '5:30', audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', youtubeUrl: 'https://www.youtube.com/watch?v=Jhj6eh4nevI' },
+      { id: '29', title: 'Gayatri Mantra', artist: 'Anuradha Paudwal', genre: 'Devotional', year: '1999', duration: '5:30', audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', youtubeUrl: 'https://www.youtube.com/watch?v=uOmtVFQ3WF8' },
       { id: '30', title: 'Mahamrityunjaya Mantra', artist: 'Uma Mohan', genre: 'Devotional', year: '1998', duration: '9:15', audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', youtubeUrl: 'https://www.youtube.com/watch?v=tXLsLfELEsY' }
     ]
   };
@@ -96,8 +97,10 @@ const MusicRecommendations: React.FC<MusicRecommendationsProps> = ({ emotion }) 
     
     if (currentlyPlaying === song.id && isPlaying) {
       // Pause current song
-      audioRef.current?.pause();
-      setIsPlaying(false);
+      if (audioRef.current) {
+        audioRef.current.pause();
+        setIsPlaying(false);
+      }
     } else {
       // Play new song or resume
       if (audioRef.current) {
@@ -105,20 +108,27 @@ const MusicRecommendations: React.FC<MusicRecommendationsProps> = ({ emotion }) 
           audioRef.current.src = song.audioUrl || '';
           setCurrentlyPlaying(song.id);
         }
-        audioRef.current.play().then(() => {
-          setIsPlaying(true);
-        }).catch((error) => {
-          console.error('Error playing audio:', error);
-          // Fallback: show message that audio is not available
-          alert('Audio not available for this song. This is a demo with placeholder audio.');
-        });
+        
+        const playPromise = audioRef.current.play();
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => {
+              setIsPlaying(true);
+              console.log('Audio started playing successfully');
+            })
+            .catch((error) => {
+              console.error('Error playing audio:', error);
+              // Fallback: show message that audio is not available
+              alert('Audio preview not available for this song. Please use the YouTube button to listen to the full song.');
+            });
+        }
       }
     }
   };
 
   const handleYouTubePlay = (song: Song) => {
-    console.log('Opening YouTube for song:', song.title);
-    window.open(song.youtubeUrl, '_blank');
+    console.log('Opening YouTube for song:', song.title, song.youtubeUrl);
+    window.open(song.youtubeUrl, '_blank', 'noopener,noreferrer');
   };
 
   const handleAudioEnded = () => {
@@ -145,6 +155,8 @@ const MusicRecommendations: React.FC<MusicRecommendationsProps> = ({ emotion }) 
         ref={audioRef}
         onEnded={handleAudioEnded}
         onError={(e) => console.error('Audio error:', e)}
+        onLoadStart={() => console.log('Audio loading started')}
+        onCanPlay={() => console.log('Audio can play')}
       />
 
       {/* Header */}
